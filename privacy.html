@@ -18,97 +18,130 @@
 </head>
 <body>
 <h1>RecoverX Privacy Policy</h1>
-<p class="muted">Last updated: September 23, 2026: adds the section for the EU, the EEA, the UK and Switzerland. Applies to RecoverX 2.0 and later (1.3.1 was never released); the policy for 1.3 and earlier is summarized at the end.</p>
+<p class="muted">Last updated: September 24, 2026: covers RecoverX 2.0: the new Apple Health types, Apple Watch, background refresh, widgets and Siri, settings in iCloud, and where the AI Coach is offered. Applies to RecoverX 2.0 and later (1.3.1 was never released); the policy for 1.3 and earlier is summarized at the end.</p>
 
-<h2>The short version</h2>
+<h2 id="short">The short version</h2>
 <ul>
-<li>Your health data stays on your iPhone. RecoverX reads Apple Health on the device, scores your recovery on the device, and never uploads your health readings.</li>
-<li>Two optional features send something off the device, and only when you use them: the <strong>AI Coach on Pro</strong> (your typed questions and a coarse summary of your scores go to our proxy and then to Anthropic) and <strong>Crew</strong> (your display name and three daily scores are stored in your own iCloud and shared with the people you invite).</li>
+<li>Your health readings are never sent to us. RecoverX reads Apple Health on your iPhone and scores your recovery there. Your settings follow you to a new iPhone through your own iCloud, which we cannot read; no health data goes with them.</li>
+<li>Two optional features send something to other people or companies, and only when you use them: the <strong>cloud AI Coach on Pro</strong> (your typed questions and a coarse summary of today's score go to our proxy and then to Anthropic) and <strong>Crew</strong> (your display name and three daily scores are stored in your own iCloud and shared with the people you invite).</li>
 <li>We use a crash reporter (Sentry) that receives technical crash details with health values removed.</li>
 <li>There is no account, no login, no advertising, no data broker, and nothing is sold.</li>
 </ul>
 
-<h2>Data we read from Apple Health</h2>
+<h2 id="health">Data we read from Apple Health</h2>
 <p>RecoverX requests <strong>read-only</strong> access to these HealthKit types. All access is subject to your explicit permission, and you can revoke any type at any time in iOS Settings → Health → Data Access &amp; Devices.</p>
 <ul>
-<li>Sleep analysis, heart rate, heart rate variability (Apple Watch reports SDNN), resting heart rate, VO₂max, and workout records. These produce your recovery, sleep and strain scores and your training history.</li>
+<li>Sleep analysis, heart rate, heart rate variability (Apple Watch reports SDNN), resting heart rate, VO₂max, and workout records. These produce your recovery, sleep and strain scores and your training history; VO₂max also gives the cardio fitness on the Heart page and, on Pro, your fitness age.</li>
 <li>Steps, walking and running distance, and cycling distance. Read only inside the window of an effort the app has already detected from heart rate, to tell a walk from a run from a ride. Decline them and detection still works from heart rate alone; the app asks you the type instead of guessing.</li>
 <li>Respiratory rate, wrist temperature during sleep, and one-minute heart rate recovery. Shown as your own trends against your own baseline. They do not change your recovery score, and nothing in RecoverX detects, diagnoses or screens for any condition.</li>
 <li>Biological sex, read once. The published fitness-age reference tables are separated by sex. Decline it and RecoverX says it cannot compute the number rather than guessing one.</li>
 <li>Date of birth, read once to pre-fill your age during setup. You can type your age instead and never grant this.</li>
 <li>Menstrual flow, read only if you log it in Apple Health, and only to note where you are in your cycle next to your recovery score. It is never uploaded. Deny this one type, or turn cycle tracking off in Settings, and the app works normally without it.</li>
+<li>Mindful minutes, the sessions the Breathe and Mindfulness apps log. When an HRV reading falls inside one, RecoverX keeps it apart from your nights, because slow breathing raises HRV. Nothing else uses them.</li>
+<li>The effort rating on a workout, the one you gave it or the one Apple Watch estimated. It shows on your sessions and on the share card, and it does not change your score.</li>
+<li>Walking heart rate average, shown on the Heart page against your own last two months. It does not change your score.</li>
+<li>From Apple Watch's heart features, and only if you use them: AFib History, your ECG results (Apple's classification of each recording and its average heart rate, never the recording itself), and the notifications Apple Watch sends about a high or low heart rate, an irregular rhythm or low cardio fitness. The Heart page lists them exactly as Apple recorded them. RecoverX does not interpret, classify or count them, and none of them changes your score.</li>
 </ul>
-<p>RecoverX writes to Apple Health only when you ask it to: a workout you log by hand can be saved to Health as a workout record.</p>
+<p>New users are asked for all of these when they first connect Apple Health. If you used RecoverX before 2.0, the Heart page asks for its new types when you open it, never at launch. Decline any of them and the rest of the app keeps working; that type's card says it is not available.</p>
+<p>RecoverX writes one kind of record to Apple Health: workouts. A session it finds from your heart rate and wrist motion is saved as a workout, so it also appears in the Fitness app; naming it rewrites that record, and “Not a workout” deletes it. A workout you log with Quick Log on Apple Watch is saved the same way. A session you add by hand on your iPhone stays inside RecoverX and is not written to Health. Decline write access and found sessions stay inside RecoverX for the day.</p>
 
-<h2>What stays on your device</h2>
-<p>Everything above, plus your score history, your settings, your sport picks, your daily check-ins and your usage telemetry (which screens you open, whether you tap the daily score) is stored on your iPhone. Usage telemetry is never sent automatically; the in-app "Export my usage data" button shows you exactly what would be shared before you choose to send it.</p>
-<p>Uninstalling RecoverX removes all RecoverX data from the device. Your Apple Health data is managed by Apple's Health app and is not affected. Crew data you created in iCloud is described below.</p>
-
-<h2>AI Coach</h2>
-<p>The free coach runs entirely on your iPhone using Apple's on-device language model (iPhones that support Apple Intelligence). Nothing leaves the device.</p>
-<p>On RecoverX Pro, the coach can answer from a cloud model. When you send a message on Pro, the app transmits:</p>
+<h2 id="watch">On Apple Watch</h2>
+<p>The RecoverX watch app reads your heart rate for its live heart-rate screen and saves the workouts you log with Quick Log to Apple Health. It never sends anything to us. It does exchange a few things with your iPhone, over Apple's own connection between the two:</p>
 <ul>
-<li>the text you typed and the coach's previous replies in that conversation;</li>
-<li>a coarse summary of today's scores: which of the five signals (sleep, resting heart rate, HRV, training load, how you said you feel) pushed the score up or down, and by roughly how much, on a small scale. It contains no raw Health readings, no heart-rate values, no sleep times and no timestamps; this is enforced by automated tests in the app;</li>
-<li>the App Store's signed proof of your Pro purchase, so our proxy can confirm you are entitled to the cloud coach. It contains transaction and product identifiers and dates. It contains no name, email or payment details.</li>
+<li>Your iPhone sends the watch today's score, its band, how many points each of the five signals took off, whether you have Pro, and, on Pro, how far away your next race is.</li>
+<li>The watch sends your iPhone the check-ins you answer on it.</li>
+<li>With Motion &amp; Fitness access, the watch records wrist motion in the background and sends your iPhone one short summary per minute: how much and how rhythmically your wrist moved, and the kind of movement watchOS recognised, such as walking or cycling. The raw motion stays on the watch. Your iPhone uses the summaries to tell what kind of session you did, and deletes them after 30 days.</li>
+<li>The watch keeps a 21-day log of its own battery level, whether it was charging and whether Low Power Mode was on, and sends your iPhone the new readings. Your iPhone uses the log to tell a night the watch spent on the charger, or ran out, from a night you slept badly. The watch uses it to post one “Charge before bed” note on evenings the battery probably won't last the night. That needs the RecoverX complication on your watch face, and you can turn it off in Settings.</li>
 </ul>
-<p>The request goes to a proxy we operate on Cloudflare Workers, which forwards it to <a href="https://www.anthropic.com">Anthropic</a>'s API (the Claude model) and streams the answer back. Our proxy stores no message content. It keeps only counters, keyed by an App Store transaction identifier, so that each subscriber's daily and weekly message allowance and our monthly spending cap can be enforced; these counters expire on their own. Anthropic processes the text to generate the reply, deletes API inputs and outputs within 30 days, and does not use them to train its models by default (see <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-personal-data">Anthropic's retention policy</a>). Cloudflare handles the request as our infrastructure provider under <a href="https://www.cloudflare.com/privacypolicy/">its privacy policy</a>.</p>
-<p>If you never send a message on Pro, none of this happens.</p>
+<p>All of this stays on your watch and your iPhone.</p>
 
-<h2>Crew</h2>
+<h2 id="background">Background refresh, widgets and Siri</h2>
+<p>RecoverX can update your score without being opened. When Apple Health receives new sleep, HRV, resting heart rate, workout or Breathe data, iOS may wake RecoverX briefly to read it and rescore the day, and RecoverX asks iOS for one scheduled refresh early each morning. This happens on your iPhone, exactly as if the app were open, and nothing is sent anywhere. Settings → Background refresh shows when it last ran and what started it. Turning off Background App Refresh for RecoverX in iOS Settings stops the scheduled refresh.</p>
+<p>Widgets and the watch complication show today's score wherever you place them, so anyone who can see your screen can see it. Lock Screen widgets and complications show only the score and its band; Home Screen widgets can also show the day's headline and where the points came off.</p>
+<p>If you ask Siri or run a shortcut (“What's my recovery in RecoverX?”), RecoverX answers on your iPhone with today's score, its band and the reason, and Siri shows or speaks that answer. What you say to Siri is handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. A check-in logged from Siri, Shortcuts, Control Center or a widget is saved on your iPhone.</p>
+
+<h2 id="device">What stays on your device</h2>
+<p>Everything above, plus your score history, your settings, your sport picks, your daily check-ins, the bed and wake times you type for a night the watch missed, and your usage telemetry (which screens you open, whether you tap the daily score) is stored on your iPhone. Your settings are also kept in your iCloud (see iCloud). Usage telemetry does not leave the phone on its own. The only part that ever does is the short trail of recent events inside a crash report (see Crash reporting), and the in-app “Export my usage data” button shows you exactly what would be shared before you choose to send it anywhere.</p>
+<p>Uninstalling RecoverX removes all RecoverX data from the device. If you back up your iPhone to iCloud or to a computer, RecoverX's data is in that backup, as every app's is, and Apple manages it. Your Apple Health data is managed by Apple's Health app and is not affected; workouts RecoverX saved there stay until you remove them in Health. Settings kept in your iCloud stay there after you delete the app, and Crew data you created in iCloud is described below.</p>
+
+<h2 id="icloud">iCloud</h2>
+<p>Your settings follow you to a new iPhone through iCloud's key-value storage, under your own Apple Account. RecoverX keeps these there, and nothing else: your training mode; your main sport, your sport picks and any sport you set by hand; the data source the app reads; your pool length; the automatic-refresh switch; how History is laid out; your notification switches; the weekly usage-share reminder; whether the cloud coach is turned on; the workout-detection switches; your Crew display name; and the date you started using RecoverX.</p>
+<p>None of these is a health reading, a score, your age or anything about your cycle, and no health data goes to iCloud with them. Your score history stays on your iPhone. The only scores RecoverX ever puts in iCloud are Crew's, and only if you use Crew (see Crew). We cannot read any of it; Apple stores it under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. The sync runs whenever iCloud is on for your Apple Account.</p>
+
+<h2 id="ai-coach">AI Coach</h2>
+<p>The free coach runs entirely on your iPhone, on Apple's on-device language model (iOS 26, on an iPhone with Apple Intelligence turned on). Nothing leaves the device.</p>
+<p>On RecoverX Pro, the coach can also answer from a cloud model. It stays off until you have read what it sends and turned it on (Settings → Privacy → Enable AI Coach, or from the Coach tab), and every chat begins by saying that the answers are AI-generated. When you send it a message, the app transmits:</p>
+<ul>
+<li>the text you typed and the earlier messages of that chat;</li>
+<li>a summary of today's score: the score and its three sub-scores (cardiovascular load, muscular load, stress); how many points each of the five signals (sleep, resting heart rate, HRV, training load, how you said you feel) took off, and in which direction; whether each of sleep, HRV, resting heart rate and load was measured, filled in from your usual, cut short, typed by you, still calibrating or missing; how far your baselines have been built; which plan you are on; and the time the score was computed. That time is the only timestamp in it. It contains no raw Health readings: no heart-rate or HRV values, no sleep or bed times. Automated tests in the app hold it to that;</li>
+<li>a count of the topics you asked about in the last four weeks, from a fixed list of ten (for example “sleep 3 times, HRV twice”), never the words you used;</li>
+<li>the App Store's signed proof of your Pro purchase, so our proxy can confirm you are entitled to the cloud coach. Apple puts transaction and product identifiers, dates, the price and currency, and the country of your App Store account in it. It contains no name, email or payment details.</li>
+</ul>
+<p>The request goes to a proxy we operate on Cloudflare Workers. The proxy forwards your messages and the summary to <a href="https://www.anthropic.com">Anthropic</a>'s API (the Claude model) and streams the answer back. It does not forward your purchase proof, and it adds no identifier of yours. Our proxy stores no message content. It keeps only counters, keyed by your purchase's original transaction identifier: how many messages you sent today and this week, and what they cost us this month. They let us enforce each subscriber's allowance and our own monthly spending cap. The daily and weekly counters expire about an hour after their day or week ends, and the monthly one after 45 days. Like any web server, the proxy sees the network address a request comes from, and it keeps nothing of it. Anthropic processes the text to generate the reply. It deletes API inputs and outputs within 30 days, longer only if a message is flagged under its usage policy, and it does not use them to train its models by default (see <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-personal-data">Anthropic's retention policy</a>). Cloudflare handles the request as our infrastructure provider under <a href="https://www.cloudflare.com/privacypolicy/">its privacy policy</a>.</p>
+<p><strong>Where the coaches are offered.</strong> The cloud model is offered only in the countries where Anthropic offers its API (<a href="https://www.anthropic.com/supported-countries">Anthropic's list</a>). Before each message, our proxy checks two things against that list: the country of the App Store account in your purchase proof, and the country the request comes from, which Cloudflare works out from its network address. If either is missing from the list, the proxy replies that the coach is not available there and sends nothing on. Neither country is stored. On an App Store account from mainland China, RecoverX offers no AI coach at all. In Hong Kong, Macau and any other country not on Anthropic's list, only the on-device coach is offered. Where Apple's on-device model is available is Apple's decision (<a href="https://support.apple.com/en-us/121115">Apple's page</a>).</p>
+<p>If you never send a message to the cloud coach, none of this happens.</p>
+
+<h2 id="crew">Crew</h2>
 <p>Crew is an optional leaderboard for a few friends. When you create or join a crew, RecoverX stores in <strong>your own iCloud private database</strong> (Apple CloudKit, under your Apple Account): a crew name, your display name, an anonymous member identifier, and each day's three scores (recovery, sleep, strain) as whole numbers. The crew's owner shares that record set with the members they invite, using iCloud sharing, so members can see one another's names and daily scores. Nothing else about you is shared: no Health readings, no history, no location.</p>
 <p>We, the developers, do not have access to your Crew records; they live in your iCloud, governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Leaving a crew removes your scores from the shared set; deleting a crew you own removes it for everyone. You can hide any member on your device, and report a member by email; the report contains the crew and member identifiers and the name shown, nothing else, and it is sent only when you send it.</p>
 
-<h2>Crash reporting</h2>
-<p>RecoverX uses Sentry (Functional Software, Inc.) to receive crash and error reports so we can fix bugs. A report contains the app version, device model, iOS version, the code path that failed and a short trail of screen names. Health values, scores, message text and identifiers are stripped before anything is sent; this scrubbing is covered by automated tests. Sentry's handling of the data is described in <a href="https://sentry.io/privacy/">Sentry's privacy policy</a>. There is no advertising or behavioural analytics SDK in the app.</p>
+<h2 id="crash">Crash reporting</h2>
+<p>RecoverX uses Sentry (Functional Software, Inc.) to receive crash and error reports so we can fix bugs, including reports of the app freezing. A report contains the app version, device model, iOS version, your region setting, the code path that failed and a short trail of recent in-app events, such as which tab was open. Health values, scores, message text and identifiers are stripped before anything is sent; this scrubbing is covered by automated tests. Sentry's handling of the data is described in <a href="https://sentry.io/privacy/">Sentry's privacy policy</a>. There is no advertising or behavioural analytics SDK in the app.</p>
 
-<h2>Purchases</h2>
-<p>Subscriptions and the lifetime purchase are handled by Apple through the App Store. We never see your payment details. As described above, the App Store's signed transaction is sent to our proxy only to verify Pro for the cloud coach. Offer codes and promo codes are redeemed through Apple.</p>
+<h2 id="purchases">Purchases</h2>
+<p>Subscriptions and the lifetime purchase are handled by Apple through the App Store. We never see your payment details. As described above, the App Store's signed transaction is sent to our proxy only to verify Pro for the cloud coach. Offer codes and promo codes are redeemed through Apple. Manage subscription and Redeem an offer code in Settings open Apple's own screens.</p>
 
-<h2>Who receives data, at a glance</h2>
+<h2 id="recipients">Who receives data, at a glance</h2>
 <table>
 <tr><th>Recipient</th><th>What</th><th>When</th><th>Why</th></tr>
-<tr><td>Nobody</td><td>Health readings, score history, settings</td><td>Always</td><td>Processed on the device</td></tr>
-<tr><td>Our Cloudflare proxy</td><td>Coach messages, coarse score summary, purchase proof</td><td>Only when you message the cloud coach on Pro</td><td>Entitlement check, allowance counters, forwarding</td></tr>
-<tr><td>Anthropic</td><td>Coach messages and the coarse summary</td><td>Same</td><td>Generating the reply; deleted within 30 days; not used for training by default</td></tr>
+<tr><td>Nobody</td><td>Health readings and your score history</td><td>Always</td><td>Processed on your iPhone</td></tr>
+<tr><td>Your own iCloud (Apple)</td><td>Settings, with no health data</td><td>Whenever iCloud is on</td><td>Moving to a new iPhone</td></tr>
+<tr><td>Your Apple Watch and your iPhone, between each other</td><td>Today's score and where the points came off; check-ins; wrist-motion summaries; the watch's battery readings</td><td>While you use the watch app</td><td>The score on your wrist; telling a missed night from a bad one</td></tr>
+<tr><td>Our Cloudflare proxy</td><td>Coach messages, the score summary, the purchase proof; the country a request comes from</td><td>Only when you message the cloud coach on Pro</td><td>Entitlement and region checks, allowance counters, forwarding</td></tr>
+<tr><td>Anthropic</td><td>Coach messages and the score summary</td><td>Same</td><td>Generating the reply; deleted within 30 days; not used for training by default</td></tr>
 <tr><td>Your iCloud, shared with crew members</td><td>Display name, member id, three daily scores</td><td>Only if you use Crew</td><td>The leaderboard</td></tr>
-<tr><td>Sentry</td><td>Crash and error reports, scrubbed</td><td>When the app crashes or hits an error</td><td>Fixing bugs</td></tr>
-<tr><td>Apple</td><td>Purchases, iCloud, HealthKit framework</td><td>Per Apple's policies</td><td>Platform services</td></tr>
+<tr><td>Sentry</td><td>Crash and error reports, scrubbed</td><td>When the app crashes, freezes or hits an error</td><td>Fixing bugs</td></tr>
+<tr><td>Apple</td><td>Purchases, iCloud, HealthKit, Siri</td><td>Per Apple's policies</td><td>Platform services</td></tr>
 </table>
 
-<h2>Your choices</h2>
+<h2 id="choices">Your choices</h2>
 <ul>
-<li>Deny or revoke any Health type in iOS Settings; RecoverX adapts and tells you what it can no longer compute.</li>
-<li>Use the free on-device coach and never send a message to the cloud coach.</li>
+<li>Deny or revoke any Health type in iOS Settings; RecoverX adapts and tells you what it can no longer compute. The Heart page's types can be declined on their own.</li>
+<li>Leave the cloud coach off, or turn it off in Settings → Privacy. The on-device coach sends nothing.</li>
 <li>Do not create or join a crew, or leave one at any time.</li>
+<li>iCloud's own settings on your iPhone decide whether RecoverX keeps your settings in iCloud.</li>
+<li>On Apple Watch, turn off Battery warnings in Settings, or remove the RecoverX complication, to stop the charge note. Deny Motion &amp; Fitness to the watch app to stop the wrist-motion summaries; sessions are then found from heart rate alone.</li>
+<li>Turn off Background App Refresh for RecoverX in iOS Settings to stop the scheduled refresh.</li>
 <li>Delete the app to remove all local data.</li>
 <li>Email us to ask what, if anything, our proxy holds under your transaction identifier; we can delete the counters on request.</li>
 </ul>
 
-<h2>If you are in the EU, the EEA, the UK or Switzerland</h2>
+<h2 id="europe">If you are in the EU, the EEA, the UK or Switzerland</h2>
 <p><strong>Who is responsible.</strong> The controller of the personal data described in this policy is Tong Wu, the individual developer who publishes RecoverX. Contact: <a href="mailto:allenwu06@outlook.com">allenwu06@outlook.com</a>. The postal address is the one shown on RecoverX&rsquo;s App Store page in the European Union.</p>
 <p><strong>What is processed, and on what legal basis.</strong></p>
 <ul>
 <li>Health readings, scores, check-ins and history are processed only on your device, under the permissions you grant in iOS. We never receive them.</li>
 <li>The cloud coach on Pro: your message and the coarse score summary described above, with your explicit consent (GDPR Articles 6(1)(a) and 9(2)(a)). You give it by turning the cloud coach on after reading what it sends, and you can withdraw it at any time by turning it off in Settings or simply not using it. Withdrawing does not affect replies you already received.</li>
 <li>The App Store&rsquo;s proof of your Pro purchase, checked by our proxy: to provide the service you bought (Article 6(1)(b)).</li>
+<li>The region check for the cloud coach: the country your request comes from and the App Store country in your purchase proof are used for that request only and are not stored, so the coach runs only where our supplier permits it (Article 6(1)(f)).</li>
 <li>Crash reports: our legitimate interest in keeping the app working (Article 6(1)(f)). Health values are removed before anything is sent.</li>
 <li>Crew: your own choice to create or join a crew. The data lives in your iCloud and is shared only with the people you invite; we have no access to it.</li>
+<li>Your settings, kept in your own iCloud whenever iCloud is on, under your Apple Account. They contain no health data, and we have no access to them.</li>
 </ul>
 <p><strong>Transfers outside Europe.</strong> Cloudflare, Anthropic and Sentry process data in the United States and elsewhere. We rely on the data-protection terms these providers offer their customers, which include the European Commission&rsquo;s Standard Contractual Clauses.</p>
-<p><strong>How long.</strong> Data on your device stays until you delete it or the app. The proxy&rsquo;s counters expire on their own. Anthropic deletes API inputs and outputs within 30 days. Sentry keeps crash reports for its standard retention period.</p>
-<p><strong>Your rights.</strong> You can ask to access, correct, delete, restrict or port your data, object to processing based on legitimate interests, and withdraw consent. Most of your data never reaches us: deleting the app removes it, and iOS Settings controls Health access. For anything our proxy holds under your transaction identifier, email us and we will answer within one month. You can also complain to the data protection authority where you live or work.</p>
+<p><strong>How long.</strong> Data on your device stays until you delete it or the app. On your own devices, the watch keeps its battery readings for 21 days and your iPhone keeps wrist-motion summaries for 30 days. The proxy&rsquo;s counters expire within 45 days. Anthropic deletes API inputs and outputs within 30 days. Sentry keeps crash reports for its standard retention period. Settings in your iCloud stay there after you delete the app.</p>
+<p><strong>Your rights.</strong> You can ask to access, correct, delete, restrict or port your data, object to processing based on legitimate interests, and withdraw consent. Most of your data never reaches us: deleting the app removes it, iOS Settings controls Health access, and iCloud&rsquo;s own settings control what RecoverX keeps in your iCloud. For anything our proxy holds under your transaction identifier, email us and we will answer within one month. You can also complain to the data protection authority where you live or work.</p>
 <p><strong>No automated decisions with legal effect.</strong> The recovery score is guidance for your training. It is not a decision that has legal or similarly significant effects on you.</p>
 <p><strong>Age.</strong> In the EU and the EEA, the cloud coach and Crew are for people aged 16 and over, or the lower age your country sets for consenting to online services.</p>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>RecoverX is not intended for children under 13, and we do not knowingly collect data from children.</p>
 
-<h2>Changes to this policy</h2>
+<h2 id="changes">Changes to this policy</h2>
 <p>Updates are reflected by the date at the top and posted at this URL. When a new version of the app sends data somewhere new, this page changes before that version ships.</p>
 <p class="muted">Versions 1.3 and earlier: the app had no cloud coach, no Crew and no active crash reporting; all processing was on the device, as the previous policy stated.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions about this policy, or requests about your data: <a href="mailto:allenwu06@outlook.com">allenwu06@outlook.com</a>.</p>
 </body>
 </html>
